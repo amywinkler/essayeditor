@@ -1,10 +1,31 @@
 $().ready(function() {
 
-$("body").css("background-color", "red");
-console.log("hello there");
 content= $("#docs-editor-container");
 
 text= content[0].innerText;
-console.log(text);
+
+var info = new Object();
+
+var thing= ' ';
+
+var listOfStuff = text.split(" ");
+
+/*
+for (i = 0; i < text.length; i++) 
+{
+	ch= text.charAt(i);
+ if ((ch == ' ') || (ch == '\t') || (ch == '\n'))
+ {
+ listOfStuff.push(thing);
+ thing= " ";
+ }  
+ else
+ {
+ thing += text.charAt(i);
+ } 
+}
+*/
+
+console.log(listOfStuff.toString());
 
 });
