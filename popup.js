@@ -6,8 +6,10 @@ chrome.tabs.query({active: true}, function(tabs){
 
 
     for (var i = 0; i < object.words.length; i++) {
-
+    		if(object.words[i] !== "")
+    		{
     		document.write(object.words[i] + " repeats " + object.repeats[i] + " times." + "<br>");
+    	}
     	
     };
   })

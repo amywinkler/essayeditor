@@ -82,8 +82,10 @@ var print = true;//boolean to determine if something should be printed or not
 				}	
 			}
 
-			if(print == true && text[i] !== null && count >= 3 && text[i] != "the" && text[i] != "i" && text[i] != "and" && text[i] != "a" && text[i]
-			 != "my" && text[i] != "to" && text[i] != "at" && text[i] != "of") //if the word has not been repeated print
+			badValues= ["i" , "the", "if", "how", "you", "i", "my", "about"];
+
+			if(print == true && badValues.indexOf(text[i]) == -1 && text[i] !== null && count >= 3 && text[i] != "the" && text[i] != "i" && text[i] != "and" && text[i] != "a" && text[i]
+			 != "my" && text[i] != "to" && text[i] != "at" && text[i] != "of" && text[i] != "i" && text[i] != "this" && text[i] != "me" && text[i] != "in" && text[i] != "how") //if the word has not been repeated print
 			{
 				repeats.push(count);
 				words.push(text[i]);
