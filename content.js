@@ -1,3 +1,8 @@
+
+
+var repeats = new Array();
+var words = new Array ();
+
 $().ready(function(){
 
 var content = $("#docs-editor-container"); //content is everything
@@ -12,22 +17,11 @@ text = text.split(nbsp); //split text into array
 
 text.shift();
 
-/*
-function getRidOfSpaces(element) {
-  if (element == ' ') {
-    return element;
-  } 
-}
-
-var textWithoutSpaces = text.filter(getRidOfSpaces);
-*/
 
 console.log(text);
-//console.log(textWithoutSpaces);
 
 /*
-console.log(text[1]);
-
+	//attempts to get rid of newline character ---NOT WORKING
 	if(text[1] == "\n" || text[1] == "\r" || text[1] == "\t" || text[1] == "\b" || text[1] == "")
 	{
 		text[1] = text[1].substring(1);
@@ -42,6 +36,7 @@ console.log(text[1]);
 		}
 	}
 
+/*
 	for(var i = 0; i <  text.length; i++)   // first for loop goes to each element
 	{
 		if(text[i] == "\n" || text[i] == "\r" || text[i] == "\t" || text[i] == "\b" || text[i] == "")
@@ -50,15 +45,10 @@ console.log(text[1]);
 			i--;
 		}
 	}
+	*/
 	
-
-	
-
-
 
 	console.log(text);	
-
-
 
 var print = true;//boolean to determine if something should be printed or not
 
@@ -66,7 +56,7 @@ var print = true;//boolean to determine if something should be printed or not
 	{
 		if(text[i] == "\n" || text[i] == "\r" || text[i] == "\t" || text[i] == "\b" )
 		{
-			delete text[i];
+			text.splice(i,1);
 			i--;
 		}
 		
@@ -92,11 +82,32 @@ var print = true;//boolean to determine if something should be printed or not
 				}	
 			}
 
-			if(print == true)//if the word has not been repeated print
+			if(print == true && text[i] !== null && count >= 3 && text[i] != "the" && text[i] != "i" && text[i] != "and" && text[i] != "a" && text[i]
+			 != "my" && text[i] != "to" && text[i] != "at" && text[i] != "of") //if the word has not been repeated print
 			{
-				console.log(text[i] + " is repeated " + count + " times.");  //output
+				repeats.push(count);
+				words.push(text[i]);
 			}
 		}
 
 	}
+console.log(repeats);
+console.log(words);
 });
+
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse){
+	
+	if(message === "getData")
+	{
+		console.log("really got message");
+		var object = {
+			repeats: repeats, 
+			words: words
+		};
+		console.log(object);
+		sendResponse(object);
+
+	}
+});
+
+
