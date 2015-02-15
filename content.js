@@ -13,8 +13,6 @@ text = text.split(nbsp); //split text into array
 text.shift();
 text.shift();
 
-boolean print = true;
-
    for(var i = 0; i <  text.length; i++)   // first for loop goes to each element
 {
 var count = 0;//counter starts at 0 and increments each time a word is repeated
