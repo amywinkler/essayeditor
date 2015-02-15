@@ -1,6 +1,3 @@
-// Copyright (c) 2014 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
 
 /**
  * Get the current URL.
@@ -8,7 +5,7 @@
  * @param {function(string)} callback - called when the URL of the current tab
  *   is found.
  **/
-function getCurrentTabUrl(callback) {
+function getCurrentTabUrl(callback) {                           
   // Query filter to be passed to chrome.tabs.query - see
   // https://developer.chrome.com/extensions/tabs#method-query
   var queryInfo = {
@@ -106,13 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
       // a single image, this does not matter, but if you're going to embed
       // multiple external images in your page, then the absence of width/height
       // attributes causes the popup to resize multiple times.
-      imageResult.width = width;
-      imageResult.height = height;
+      imageResult.width = 500;
+      imageResult.height = 500;
       imageResult.src = imageUrl;
       imageResult.hidden = false;
+      renderStatus('HEY I AM UNIQUE TEXT ');
 
     }, function(errorMessage) {
-      renderStatus('Cannot display image. ' + errorMessage);
+      renderStatus('HEY I AM UNIQUE TEXT' + errorMessage);
     });
   });
 });
